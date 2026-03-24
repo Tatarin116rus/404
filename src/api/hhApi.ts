@@ -1,4 +1,4 @@
-import type { VacancyResponse } from "./types";
+import type { VacancyResponse, Vacancy} from "./types";
 
 const BASE_URL = "https://api.hh.ru/vacancies";
 
@@ -64,4 +64,11 @@ export async function fetchVacancies(params: {
     }
     throw new Error("Неизвестная ошибка при загрузке вакансий");
   }
+}
+
+export async function fetchVacancyById(id: string): Promise<Vacancy> {
+  const res = await fetch(`${BASE_URL}/${id}`);
+  if (!res.ok) throw new Error('Ошибка загрузки вакансии');
+  const data = await res.json();
+  return data;
 }

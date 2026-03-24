@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Group, Button, Text, Badge } from "@mantine/core";
 import type { Vacancy } from "../../api/types";
 import classes from "./VacancyCard.module.css";
@@ -6,6 +7,8 @@ import clsx from "clsx";
 type Props = { vacancy: Vacancy };
 
 export const VacancyCard: React.FC<Props> = ({ vacancy }) => {
+  const navigate = useNavigate();
+
   const formatNumber = (num?: number) => {
     if (!num) return "";
     return new Intl.NumberFormat("ru-RU").format(num);
@@ -46,24 +49,28 @@ export const VacancyCard: React.FC<Props> = ({ vacancy }) => {
     return experienceName;
   };
 
- const getWorkFormatData = (scheduleId?: string | null) => {
-  switch (scheduleId) {
-    case "remote":
-      return { label: "Можно удалённо", bg: "var(--mantine-color-primary-4)", color: "var(--mantine-color-white-0)" };
-    case "fullDay":
-      return { label: "Офис", bg: "var(--mantine-color-ultraLight-9)", color: "var(--mantine-color-gray-9)" };
-    case "flexible":
-    case "shift":
-      return { label: "Гибрид", bg: "var(--mantine-color-black-9)", color: "var(--mantine-color-white-0)" };
-    default:
-      return { label: "Не указано", bg: "var(--mantine-color-gray-1)", color: "var(--mantine-color-black-9)" };
-  }
-};
+  const getWorkFormatData = (scheduleId?: string | null) => {
+    switch (scheduleId) {
+      case "remote":
+        return { label: "Можно удалённо", bg: "var(--mantine-color-primary-4)", color: "var(--mantine-color-white-0)" };
+      case "fullDay":
+        return { label: "Офис", bg: "var(--mantine-color-ultraLight-9)", color: "var(--mantine-color-gray-9)" };
+      case "flexible":
+      case "shift":
+        return { label: "Гибрид", bg: "var(--mantine-color-black-9)", color: "var(--mantine-color-white-0)" };
+      default:
+        return { label: "Не указано", bg: "var(--mantine-color-gray-1)", color: "var(--mantine-color-black-9)" };
+    }
+  };
 
-const scheduleId = vacancy.schedule?.id;
-const { label, bg, color } = scheduleId
-  ? getWorkFormatData(scheduleId)
-  : { label: "Не указано", bg: "var(--mantine-color-gray-1)", color: "var(--mantine-color-black-9)" };
+  const scheduleId = vacancy.schedule?.id;
+  const { label, bg, color } = scheduleId
+    ? getWorkFormatData(scheduleId)
+    : { label: "Не указано", bg: "var(--mantine-color-gray-1)", color: "var(--mantine-color-black-9)" };
+
+  const handleView = () => {
+    navigate(`/vacancies/${vacancy.id}`);
+  };
 
   return (
     <div className={classes.card}>
@@ -88,6 +95,7 @@ const { label, bg, color } = scheduleId
         <Button
           className={clsx(classes.button, classes["button-view"])}
           color="black.9"
+          onClick={handleView}
         >
           Смотреть вакансию
         </Button>

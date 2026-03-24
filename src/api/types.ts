@@ -19,8 +19,11 @@ export interface Vacancy {
   experience: { name: string };
   schedule: { id: string; name: string } | null; // было work_format
   alternate_url: string;
-
-
+   /*добавили для VacancyDetailPage*/snippet?: {
+    requirement?: string;
+    responsibility?: string;
+  };
+}
 export interface VacancyResponse {
   items: Vacancy[];
   found: number;

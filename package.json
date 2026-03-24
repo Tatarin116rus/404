@@ -1,8 +1,9 @@
 {
-  "name": "vite-project",
+  "name": "hh-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/Tatarin116rus/hh-frontend.git",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,7 +11,9 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@mantine/carousel": "^8.3.18",
@@ -40,6 +43,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
+    "react-router-dom": "^7.13.2",
     "recharts": "^3.8.0"
   },
   "devDependencies": {
@@ -54,6 +58,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "jsdom": "^29.0.1",
     "mock-match-media": "^1.0.3",
