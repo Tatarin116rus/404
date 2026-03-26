@@ -6,14 +6,14 @@ import App from "./App";
 import { store } from "./store/store";
 import { theme } from "./theme";
 import "./index.css";
-import { BrowserRouter } from 'react-router-dom'; // импорт для работы react router. 
+import { BrowserRouter } from 'react-router-dom';  
 
-// hh-frontend это я так назвал Base в vite Congig)
+// 404 это я так назвал Base в vite Congig)
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <MantineProvider theme={theme}>
-       <BrowserRouter basename="/hh-frontend">
+       <BrowserRouter basename="/404">
           <App />
         </BrowserRouter>
       </MantineProvider>

@@ -1,22 +1,15 @@
+/* VacanciesPage.module.css */
+.container {
+  width: 100%;
+}
+
 .header {
-  position: relative;
   justify-content: space-between;
   flex-wrap: nowrap;
   padding-top: 8px;
   padding-bottom: 24px;
-}
-
-.header::after {
-  position: absolute;
-  content: "";
-  left: 50%;
-  bottom: 0;
-  width: 100vw;
-  height: 1px;
-  background-color: var(--mantine-color-preLight-9);
-  opacity: 20%;
-  transform: translateX(-50%);
-  margin-top: 16px;
+  border-bottom: 1px solid var(--mantine-color-preLight-9);
+  margin-bottom: 16px;
 }
 
 .title {
@@ -71,4 +64,17 @@
   align-items: flex-start;
   justify-content: space-between;
   padding-top: 24px;
+}
+
+.sidebar {
+  width: 317px;
+  margin-right: 24px;
+}
+
+.vacancies {
+  flex: 1;
+}
+
+.tabsList {
+  border-bottom: none;
 }
