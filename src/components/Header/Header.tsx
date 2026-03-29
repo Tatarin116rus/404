@@ -1,34 +1,49 @@
-import { Image, Text, NavLink, Group } from "@mantine/core";
-import hh from '../../assets/hh.png';
-import Ball from '../../assets/Ball.png';
-import User from '../../assets/User.png';
+import { Image, Text } from "@mantine/core";
+import { NavLink } from "react-router-dom";
+import hh from "../../assets/hh.png";
+import Ball from "../../assets/Ball.png";
+import User from "../../assets/User.png";
 import classes from "./Header.module.css";
 import clsx from "clsx";
 
 export const Header = () => {
   return (
     <header className={classes.header}>
-      <Group className={classes.logo}>
-       <Image className={classes.logo__img} src={hh} alt="HH logo" />
-        <Text className={classes.text}>.FrontEnd</Text>
-      </Group>
+      <div className={classes.logo}>
+        <Image src={hh} alt="HH logo" />
+        <Text>.FrontEnd</Text>
+      </div>
 
-      <Group className={classes.nav}>
+      <div className={classes.nav}>
         <NavLink
-          href="#"
-          label="Вакансии FE"
-          className={clsx(classes["nav__link"], classes["nav__link-vacancies"])}
-          rightSection={<Image src={Ball} alt="Ball icon" />}
-        />
+          to="/vacancies/moscow"
+          className={({ isActive }) =>
+            clsx({ [classes.active]: isActive })
+          }
+        >
+          <span>Вакансии FE</span>
+          <Image    radius="md"
+      h={5}
+      w="auto"
+      fit="contain" 
+      src={Ball}   />
+        </NavLink>
+
         <NavLink
-          href="#"
-          label="Обо мне"
-          className={clsx(classes["nav__link"], classes["nav__link-profile"])}
-          leftSection={<Image src={User} alt="User icon" />}
-        />
-      </Group>
+ 
+          to="/about"
+          className={({ isActive }) =>
+            clsx({ [classes.active]: isActive })
+          }
+        >
+          <Image src={User} radius="md"
+      h={25}
+      w="auto"
+      fit="contain" 
+       />
+          <span>Обо мне</span>
+        </NavLink>
+      </div>
     </header>
   );
 };
-
- 

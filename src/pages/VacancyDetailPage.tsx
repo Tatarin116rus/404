@@ -45,8 +45,6 @@ export const VacancyDetailPage = () => {
         <Text mt="md" fw={500}>Зарплата: {formatSalary(vacancy.salary)}</Text>
         <Text mt="md">Компания: {vacancy.employer.name}</Text>
         <Text>Город: {vacancy.area.name}</Text>
-
-        {/* Описание из snippet */}
         {vacancy.snippet && (
           <div style={{ marginTop: '1rem' }}>
             {vacancy.snippet.requirement && (

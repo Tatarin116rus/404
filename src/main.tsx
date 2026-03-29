@@ -7,8 +7,7 @@ import { store } from "./store/store";
 import { theme } from "./theme";
 import "./index.css";
 import { BrowserRouter } from 'react-router-dom';  
-
-// 404 это я так назвал Base в vite Congig)
+ 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
